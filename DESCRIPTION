@@ -17,3 +17,5 @@ Depends:
     xaringanthemer
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/flor14/r_de_reproducibilidad
+BugReports: https://github.com/flor14/r_de_reproducibilidad/issues
