@@ -1,0 +1,130 @@
+---
+title: "R de Reproducible"
+subtitle: "Una serie de herramientas para mejorar tu código"  
+author: 
+  - "Florencia D'Andrea"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#1381B0",
+  secondary_color = "#FF961C",
+  inverse_header_color = "#FFFFFF",
+    code_font_family = "Fira Code",
+  code_font_url = "https://cdn.jsdelivr.net/gh/tonsky/FiraCode@2/distr/fira_code.css"
+)
+
+```
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+
+???
+
+
+
+
+
+
+Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+
+---
+class: center, middle
+
+# xaringan
+
+### /ʃæ.'riŋ.ɡæn/
+
+---
+class: inverse, center, middle
+
+# Empecemos
+
+---
+
+# ¿Qué es la reproducibilidad?
+
+> Un resultado es reproducible cuando los mismos pasos de análisis realizados en el mismo conjunto de datos producen siempre la misma respuesta.
+
+```{r 1}
+knitr::include_graphics()
+```
+
+
+.footnote{}
+
+---
+
+# ¿A quién no le paso?
+
+* Quiero correr mi código en otra computadora o compartirlo
+
+* Quiero correr mi codigo luego de cierto tiempo
+
+
+# ¿A quién no le paso?
+
+* Quiero correr mi código en otra computadora o compartirlo
+
+PROBLEMAS:
+ * Rutas de archivos diferentes
+ * 
+
+* Quiero correr mi codigo luego de cierto tiempo
+
+PROBLEMAS:
+ * Cambios en las versiones de los paquetes y los softwares
+ * Cambios en las extensiones de los archivos, que pueden volverse ilegibles (por ejemplo .xls y .xlsx)
+
+---
+
+class: center, middle, inverse
+
+
+Un panorama de algunas herramientas de Reproducibilidad en R
+
+---
+
+class: center, middle, inverse
+
+
+5 pasos para usar RStudio IDE
+desde GitHub + mybinder.org
+
+---
+
+# Paso 1: Generar un repositorio de GitHub con 
+
+
+
+.footnote
+
+---
+
+class: center, middle, inverse
+
+
+5 pasos para usar RStudio IDE
+desde GitHub + mybinder.org
+---
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).

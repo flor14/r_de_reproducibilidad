@@ -1,0 +1,19 @@
+Type: Compendium
+Package: r_de_reproducibilidad
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.1
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Filminas para meetup
+License: What license it uses
+Depends: 
+    knitr,
+    rmarkdown,
+    xaringan,
+    xaringanthemer
+Encoding: UTF-8
+LazyData: true
