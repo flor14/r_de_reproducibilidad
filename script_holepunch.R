@@ -1,4 +1,4 @@
-remotes::install_github("karthik/holepunch")
+# remotes::install_github("karthik/holepunch")
 # Please report any installation problems in the issues
 library(holepunch)
 
