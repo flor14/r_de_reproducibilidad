@@ -44,9 +44,30 @@ Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharin
 ---
 class: center, middle
 
-# xaringan
+# Hola!
 
-### /ʃæ.'riŋ.ɡæn/
+### Aquí Florencia
+
+---
+
+### ¿Cómo se me ocurrió dar esta charla?
+
+
+---
+
+# Anna Krystalli en UseR! 2020
+
+ReproHack
+
+
+```{r, out.height=100, out.width=100}
+knitr::include_graphics("images/hex_reprohack.png")
+```
+
+
+---
+
+# LatinR 2020
 
 ---
 class: inverse, center, middle
@@ -57,14 +78,41 @@ class: inverse, center, middle
 
 # ¿Qué es la reproducibilidad?
 
-> Un resultado es reproducible cuando los mismos pasos de análisis realizados en el mismo conjunto de datos producen siempre la misma respuesta.
+> Los autores proporcionan todos los datos necesarios y el código para ejecutar el análisis nuevamente y recrear los resultados. 
+
+--
+
+> Reproducibilidad computacional: cuando se proporciona información detallada sobre código, software, hardware y detalles de implementación.
 
 ```{r 1}
-knitr::include_graphics()
+#knitr::include_graphics()
 ```
 
 
-.footnote{}
+.footnote[ClaerboutKarrenbach(1992)Reproducibility]
+
+---
+
+# Ventajas de la reproducibilidad
+
+1. Genera un historial de tu trabajo
+ 
+ * datos
+ * herramientas 
+ * métodos
+ * código
+ * documentación 
+
+2. Más fácil que recibir colaboraciones
+
+3. Publish validated research and avoid misinformation
+
+4. Write your papers, thesis and reports efficiently
+
+5. Get credits for your work fairly
+
+6. Ensure continuity of your work
+
 
 ---
 
@@ -74,6 +122,7 @@ knitr::include_graphics()
 
 * Quiero correr mi codigo luego de cierto tiempo
 
+---
 
 # ¿A quién no le paso?
 
@@ -94,7 +143,101 @@ PROBLEMAS:
 class: center, middle, inverse
 
 
-Un panorama de algunas herramientas de Reproducibilidad en R
+# Compartiendo mi código
+
+---
+
+# Entornos computacionales
+
+
+--- 
+
+
+.footnote[https://environments.rstudio.com/]
+
+---
+
+Hay varias formas de capturar entornos computacionales.
+
+* Sistemas de administración de paquetes (packrat - renv)
+
+* Binder
+
+* Máquinas virtuales 
+
+* Contenedores
+
+---
+
+# Binder
+
+Binder: una versión que se puede compartir de un proyecto que se puede ver e interactuar dentro de un entorno computacional reproducible a través de un navegador web.
+
+
+---
+
+# Mybinder.org 
+
+mybinder.org: un BinderHub público y gratuito. Debido a que es público, no debe usarlo si su proyecto requiere información personal o confidencial (como contraseñas).
+
+```{r}
+knitr::include_graphics("images/mybinder.png")
+```
+
+
+---
+
+# Creando un Binder para un proyecto
+
+Crear una versión Binderizada de un proyecto implica tres pasos clave que se explicarán en esta sección:
+
+--
+1. Especificar el entorno computacional. **intall.R + runtime.txt**
+--
+2. Coloque los archivos del proyecto en algún lugar disponible al público (**GitHub - GitLab**)
+--
+3. Generar un enlace a una carpeta del proyecto
+
+
+---
+
+# 1. Especificar el entorno computacional
+
+> runtime.txt
+
+Especifica la version de R para que use Binder.
+
+Para esto debes encontrar la fecha en que esta version fue capturada en MRAN e incluirla en el archivo como
+`r-<YYYY>-<MM>-<DD>`
+
+> install.R o DESCRIPTION (R/RStudio)
+
+Este archivo debe contener una lista de todos los paquetes a ser instalados
+
+`install.packages("tibble")`
+
+
+---
+
+# ¿Qué es MRAN?
+
+
+---
+
+# 2. Sube tu código a GitHub
+
+
+---
+
+# 3. Genere un enlace a una carpeta de su proyecto
+
+a. Dirígete a https://mybinder.org
+
+b. Pegue la URL del repositorio de GitHub del proyecto
+`https://github.com/<your-username>/<your-repository>`
+
+c. Finalmente, haz clic en el botón de LAUNCH. 
+Esto le pedirá a mybinder.org que cree el entorno necesario para ejecutar el proyecto, tenga en cuenta que esto puede llevar varios minutos.
 
 ---
 
@@ -109,6 +252,30 @@ desde GitHub + mybinder.org
 # Paso 1: Generar un repositorio de GitHub con 
 
 
+What happens when a Binder link is clicked?¶
+The link to the repository is resolved by BinderHub.
+
+BinderHub searches for a Docker image relating to the provided reference (for example, git commit hash, branch or tag).
+
+If a Docker image is not found, BinderHub requests resources from the Kubernetes cluster to run repo2docker to do the following:
+
+Fetch the repository,
+
+Build a Docker image containing the software requested in the configuration file,
+
+Push that image to the Docker registry.
+
+BinderHub sends the Docker image to JupyterHub.
+
+JupyterHub requests resources from the Kubernetes cluster to serve the Docker image.
+
+JupyterHub connects the user’s browser to the running Docker environment.
+
+JupyterHub monitors the container for activity and destroys it after a period of inactivity.
+
+---
+
+
 
 .footnote
 
@@ -119,6 +286,24 @@ class: center, middle, inverse
 
 5 pasos para usar RStudio IDE
 desde GitHub + mybinder.org
+---
+
+# Links
+
+* [Proyectos en R - R4DS](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects)
+
+* [The Turing Way Book](https://the-turing-way.netlify.app/)
+
+* [Reproducible Environments - RStudio](https://environments.rstudio.com/)
+
+* [Time_Travel_R (Webinar) - Sean Lopp](https://rstudio.com/resources/webinars/time-travel-r/)
+
+* [renv: Project Environments with R - RStudio blog](https://blog.rstudio.com/2019/11/06/renv-project-environments-for-r/)
+
+* [Rrtools]()
+
+* [Holepunch]()
+
 ---
 
 class: center, middle

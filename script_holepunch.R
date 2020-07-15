@@ -15,7 +15,7 @@ write_dockerfile(maintainer = "Flor")
 # modified file, match it to that version of R and add it here. You can
 # override this by passing r_date to some arbitrary date
 # (but one for which a R version exists).
-
+usethis::use_readme_md()
 generate_badge() # This generates a badge for your readme.
 
 # ----------------------------------------------
