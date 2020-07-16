@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>R de Reproducible</title>
+    <title>Reproducibilidad</title>
     <meta charset="utf-8" />
     <meta name="author" content="Florencia D’Andrea" />
-    <meta name="date" content="2020-07-15" />
+    <meta name="date" content="2020-07-16" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -12,10 +12,10 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# R de Reproducible
-## Una serie de herramientas para mejorar tu código
+# Reproducibilidad
+## Una serie de herramientas
 ### Florencia D’Andrea
-### 2020-07-15
+### 2020-07-16
 
 ---
 
@@ -24,47 +24,67 @@ class: center, middle, inverse, title-slide
 
 
 
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
 
-???
+# Hola! Aquí Florencia
 
+- Biologa / Investigadora postdoctoral INTA-CONICET
 
+- ¡Me encanta enseñar!
 
+- Fanática de las clases de actuación y las actividades al aire libre
 
+- Web [florencia.netlify.app](florencia.netlify.app)
 
-
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+- Twitter [@cantoflor87](twitter.com/cantoflor_87)
 
 ---
+
 class: center, middle
-
-# Hola!
-
-### Aquí Florencia
-
----
 
 ### ¿Cómo se me ocurrió dar esta charla?
 
+![](https://media.giphy.com/media/l3vR85PnGsBwu1PFK/giphy.gif)
+
+---
+
+background-image: url("images/repro.png")
+background-position: center
+background-size: contain
 
 ---
 
 # Anna Krystalli en UseR! 2020
 
-ReproHack
+[Video](https://www.youtube.com/watch?v=KHMW8fV2NXo) - [Filminas](https://annakrystalli.me/talks/user2020.html#1)
 
 
 
-```r
-knitr::include_graphics("images/hex_reprohack.png")
-```
+&lt;img src="images/anna.png" width="600" height="400" /&gt;
 
-&lt;img src="images/hex_reprohack.png" width="100" height="100" /&gt;
+
+
+---
+
+&lt;img src="images/1.png" width="2560" /&gt;
+
+---
+
+&lt;img src="images/2.png" width="2560" /&gt;
 
 
 ---
 
 # LatinR 2020
+
+Conferencia Latinoamericana sobre Uso de R en Investigación + Desarrollo
+
+7 al 9 de octubre 2020 - Virtual
+
+[latin-r.com](latin-r.com)
+
+&lt;img src="images/latinr.jpg" width="200" height="200" /&gt;
+
+
 
 ---
 class: inverse, center, middle
@@ -77,17 +97,15 @@ class: inverse, center, middle
 
 &gt; Los autores proporcionan todos los datos necesarios y el código para ejecutar el análisis nuevamente y recrear los resultados. 
 
+
 --
+
 
 &gt; Reproducibilidad computacional: cuando se proporciona información detallada sobre código, software, hardware y detalles de implementación.
 
 
-```r
-#knitr::include_graphics()
-```
 
-
-.footnote[ClaerboutKarrenbach(1992)Reproducibility]
+.footnote[Claerbout-Karrenbach(1992) - Reproducibility]
 
 ---
 
@@ -116,24 +134,28 @@ class: inverse, center, middle
 
 # ¿A quién no le paso?
 
-* Quiero correr mi código en otra computadora o compartirlo
+--
 
-* Quiero correr mi codigo luego de cierto tiempo
+**Quiero correr mi código en otra computadora o compartirlo**
 
----
-
-# ¿A quién no le paso?
-
-* Quiero correr mi código en otra computadora o compartirlo
+--
 
 PROBLEMAS:
- * Rutas de archivos diferentes
- * 
 
-* Quiero correr mi codigo luego de cierto tiempo
+ * Rutas de archivos 
+ 
+ * Problemas con las versiones del software o formatos de archivos
+
+--
+
+**Quiero correr mi código luego de cierto tiempo**
+
+--
 
 PROBLEMAS:
- * Cambios en las versiones de los paquetes y los softwares
+
+ * Actualicé los paquetes y el softwares
+ 
  * Cambios en las extensiones de los archivos, que pueden volverse ilegibles (por ejemplo .xls y .xlsx)
 
 ---
@@ -145,17 +167,14 @@ class: center, middle, inverse
 
 ---
 
+class: center, middle
+
 # Entornos computacionales
 
 
---- 
-
-
-.footnote[https://environments.rstudio.com/]
-
 ---
 
-Hay varias formas de capturar entornos computacionales.
+## Hay varias formas de capturar entornos computacionales.
 
 * Sistemas de administración de paquetes (packrat - renv)
 
@@ -169,35 +188,67 @@ Hay varias formas de capturar entornos computacionales.
 
 # Binder
 
-Binder: una versión que se puede compartir de un proyecto que se puede ver e interactuar dentro de un entorno computacional reproducible a través de un navegador web.
+Una versión de un proyecto dentro de un entorno computacional reproducible con la cual se puede compartir e interactuar a través de un navegador web.
+
+
+&lt;img src="images/binderlogo.png" width="1793" /&gt;
 
 
 ---
 
-# Mybinder.org 
+.pull-left[
+## Beneficios
 
-mybinder.org: un BinderHub público y gratuito. Debido a que es público, no debe usarlo si su proyecto requiere información personal o confidencial (como contraseñas).
+- Es relatiamente facil de usar
+
+- Podes acceder a la información con solo un click
+
+- Es gratuito
+]
+.pull-right[
+## Limitaciones
+
+- Potencia computacional
+
+- Seguridad/privacidad (si usan mybinder.org)
+
+- Also no FTP for connecting to some data.
+]
+
+---
+
+# ¿Qué es un BinderHub?
 
 
-```r
-knitr::include_graphics("images/mybinder.png")
-```
+&lt;img src="images/siberia.jpg" width="1000" /&gt;
+
+
+
+---
+
+# mybinder.org 
+
+Un BinderHub público y gratuito. Debido a que es público, no debe usarlo si su proyecto requiere información personal o confidencial (como contraseñas).
 
 &lt;img src="images/mybinder.png" width="1788" /&gt;
 
 
 ---
 
-# Creando un Binder para un proyecto
+# "Binderizando" tu proyecto 🌀
 
 Crear una versión Binderizada de un proyecto implica tres pasos clave que se explicarán en esta sección:
 
 --
-1. Especificar el entorno computacional. **intall.R + runtime.txt**
+1. Especificar el entorno computacional. (**intall.R y runtime.txt** )
+
 --
-2. Coloque los archivos del proyecto en algún lugar disponible al público (**GitHub - GitLab**)
+
+2. Subir los archivos del proyecto en algún lugar disponible al público (**GitHub o GitLab**)
+
 --
-3. Generar un enlace a una carpeta del proyecto
+
+3. Binderizar el proyecto (**mybinder.org**)
 
 
 ---
@@ -220,8 +271,14 @@ Este archivo debe contener una lista de todos los paquetes a ser instalados
 
 ---
 
-# ¿Qué es MRAN?
+# ¿Qué es MRAN? 📷
 
+
+Desde el 17 de septiembre de 2014, Microsoft toma una instantánea diaria 📸 de todo el repositorio de CRAN y la almacena en [MRAN](https://mran.microsoft.com/documents/rro/reproducibility#reproducibility). 
+
+Estas instantáneas han estado disponibles para la comunidad R desde entonces.
+
+Paquete `checkpoint` me permite recuperar las versiones en el repositorio de CRAN para un determinado día.
 
 ---
 
@@ -230,7 +287,7 @@ Este archivo debe contener una lista de todos los paquetes a ser instalados
 
 ---
 
-# 3. Genere un enlace a una carpeta de su proyecto
+# 3. Binderiza tu proyecto 🌀
 
 a. Dirígete a https://mybinder.org
 
@@ -242,52 +299,71 @@ Esto le pedirá a mybinder.org que cree el entorno necesario para ejecutar el pr
 
 ---
 
-class: center, middle, inverse
+# ¡Paciencia! Esto lleva un rato ⏳
 
-
-5 pasos para usar RStudio IDE
-desde GitHub + mybinder.org
 
 ---
 
-# Paso 1: Generar un repositorio de GitHub con 
+# Abrir tu proyecto con RStudio IDE
 
 
-What happens when a Binder link is clicked?¶
-The link to the repository is resolved by BinderHub.
+Cambia el link 
 
-BinderHub searches for a Docker image relating to the provided reference (for example, git commit hash, branch or tag).
+`https://mybinder.org/v2/gh/&lt;usuario&gt;/&lt;repositorio&gt;/&lt;rama&gt;?urlpath?rstudio`
 
-If a Docker image is not found, BinderHub requests resources from the Kubernetes cluster to run repo2docker to do the following:
-
-Fetch the repository,
-
-Build a Docker image containing the software requested in the configuration file,
-
-Push that image to the Docker registry.
-
-BinderHub sends the Docker image to JupyterHub.
-
-JupyterHub requests resources from the Kubernetes cluster to serve the Docker image.
-
-JupyterHub connects the user’s browser to the running Docker environment.
-
-JupyterHub monitors the container for activity and destroys it after a period of inactivity.
-
----
-
-
-
-.footnote
+Ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
 
 ---
 
 class: center, middle, inverse
 
+# 🌀 Binderiza tu Shiny App 🌀
 
-5 pasos para usar RStudio IDE
-desde GitHub + mybinder.org
 ---
+
+# Los pasos 1 y 2 son los mismos
+
+1. Subí tu app a una carpeta en tu repo de GitHub
+
+2. Especifica el entorno computacional
+
+
+
+---
+
+# 3. Agrega el archivo `index.pynb`
+
+Lo descargas desde [acá]()
+
+---
+
+# 4. Binderiza tu proyecto 🌀
+
+a. Dirígete a https://mybinder.org
+
+b. Pegue la URL del repositorio de GitHub del proyecto
+`https://github.com/&lt;your-username&gt;/&lt;your-repository&gt;`
+
+c. Finalmente, haz clic en el botón de LAUNCH. 
+
+
+¡Recorda que lleva un rato este paso! ⏳
+
+
+---
+
+# ¡Listo!
+
+
+Tenes que llamar la app usando este link si tenes tu datos en github
+
+`https://mybinder.org/v2/gh/&lt;usuario&gt;/&lt;repositorio&gt;/&lt;rama&gt;?urlpath=shiny/&lt;carpeta&gt;/`
+
+Ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+
+---
+
+
 
 # Links
 
@@ -302,6 +378,8 @@ desde GitHub + mybinder.org
 * [renv: Project Environments with R - RStudio blog](https://blog.rstudio.com/2019/11/06/renv-project-environments-for-r/)
 
 * [Rrtools]()
+
+* [Reproducible Research with R - ROpensci Call](https://ropensci.org/commcalls/2019-07-30/)
 
 * [Holepunch]()
 
