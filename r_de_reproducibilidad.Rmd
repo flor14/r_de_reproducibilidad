@@ -1,6 +1,6 @@
 ---
-title: "Reproducibilidad"
-subtitle: "Una serie de herramientas"  
+title: "Entornos computacionales interactivos"
+subtitle: "Binder"  
 author: 
   - "Florencia D'Andrea"
 date: '`r Sys.Date()`'
@@ -21,168 +21,68 @@ options(htmltools.dir.version = FALSE, echo = FALSE)
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
 style_duo_accent(
-  primary_color = "#1381B0",
-  secondary_color = "#FF961C",
-  inverse_header_color = "#FFFFFF",
-    code_font_family = "Fira Code",
-  code_font_url = "https://cdn.jsdelivr.net/gh/tonsky/FiraCode@2/distr/fira_code.css"
+  primary_color = "#01CC99",
+  secondary_color = "#C3EBE2",
+  inverse_header_color = "#2E414D", 
+  code_inline_color = "#179c55",
+    code_font_family = "GlacialIndifferenceRegular",
+  code_font_url = "https://fontlibrary.org/face/glacial-indifference",
+  text_font_family = "GlacialIndifferenceRegular",
+  text_font_size = "25px",
+  text_font_url = "https://fontlibrary.org/face/glacial-indifference",
+  header_font_family = "Sifonn",
+  header_font_url = "https://fonts.cdnfonts.com/css/sifonn",
 )
 
 ```
+---
 
+# Desafío
 
-# Hola! Aquí Florencia
+Te comparto este código en el que estoy trabajando ¿te funciona?
 
-- Biologa / Investigadora postdoctoral INTA-CONICET
+Abre el proyecto con Binder -> 
 
-- ¡Me encanta enseñar!
+--
 
-- Fanática de las clases de actuación y las actividades al aire libre
+**Problema 1**
 
-- Web [florencia.netlify.app](florencia.netlify.app)
+Ruta de archivo absoluta 
 
-- Twitter [@cantoflor87](twitter.com/cantoflor_87)
+--
+
+**Problema 2**
+
+Versión del paquete `tidyr 0.8.3` no incluye `pivot_longer()` y  `pivot_wider()` , funciones que recién se agregan en la versión 1.0.0
 
 ---
 
-class: center, middle
-
-### ¿Cómo se me ocurrió dar esta charla?
-
-![](https://media.giphy.com/media/l3vR85PnGsBwu1PFK/giphy.gif)
-
----
-
-background-image: url("images/repro.png")
-background-position: center
-background-size: contain
-
----
-
-# Anna Krystalli en UseR! 2020
-
-[Video](https://www.youtube.com/watch?v=KHMW8fV2NXo) - [Filminas](https://annakrystalli.me/talks/user2020.html#1)
-
-
-
-```{r echo=FALSE, out.height=400, out.width=600}
-knitr::include_graphics("images/anna.png")
-```
-
-
-
----
-
-```{r echo=FALSE}
-knitr::include_graphics("images/1.png")
-```
-
----
-
-```{r echo=FALSE}
-knitr::include_graphics("images/2.png")
-```
-
-
----
-
-# LatinR 2020
-
-Conferencia Latinoamericana sobre Uso de R en Investigación + Desarrollo
-
-7 al 9 de octubre 2020 - Virtual
-
-[latin-r.com](latin-r.com)
-
-```{r echo=FALSE, out.height=200, out.width=200}
-knitr::include_graphics("images/latinr.jpg")
-```
-
-
-
----
 class: inverse, center, middle
 
-# Empecemos
+# ¿Es suficiente compartir el código y los datos para que un trabajo sea reproducible?
 
 ---
 
-# ¿Qué es la reproducibilidad?
-
-> Los autores proporcionan todos los datos necesarios y el código para ejecutar el análisis nuevamente y recrear los resultados. 
+# Herramientas para hacer tu trabajo reproducible
 
 
---
-
-
-> Reproducibilidad computacional: cuando se proporciona información detallada sobre código, software, hardware y detalles de implementación.
-
-
-
-.footnote[Claerbout-Karrenbach(1992) - Reproducibility]
-
----
-
-# Ventajas de la reproducibilidad
-
-1. Genera un historial de tu trabajo
- 
- * datos
- * herramientas 
- * métodos
- * código
- * documentación 
-
-2. Más fácil que recibir colaboraciones
-
-3. Publish validated research and avoid misinformation
-
-4. Write your papers, thesis and reports efficiently
-
-5. Get credits for your work fairly
-
-6. Ensure continuity of your work
 
 
 ---
 
-# ¿A quién no le paso?
+class: middle
 
---
+> "Packages, libraries, and specific versions of software is crucial information for reproducibility." 
 
-**Quiero correr mi código en otra computadora o compartirlo**
+> "Los paquetes, librerías y las versiones específicas de software es información crucial para la reproducibilidad."
 
---
-
-PROBLEMAS:
-
- * Rutas de archivos 
- 
- * Problemas con las versiones del software o formatos de archivos
-
---
-
-**Quiero correr mi código luego de cierto tiempo**
-
---
-
-PROBLEMAS:
-
- * Actualicé los paquetes y el softwares
- 
- * Cambios en las extensiones de los archivos, que pueden volverse ilegibles (por ejemplo .xls y .xlsx)
+.footnote[[Nuest (2020)](http://www.dlib.org/dlib/january17/nuest/01nuest.html)]
 
 ---
 
 class: center, middle, inverse
 
-
-# Compartiendo mi código
-
----
-
-class: center, middle
-
+# Hoy:
 # Entornos computacionales
 
 
@@ -190,13 +90,52 @@ class: center, middle
 
 ## Hay varias formas de capturar entornos computacionales.
 
-* Sistemas de administración de paquetes (packrat - renv)
+**Capturar solo el software y las versiones usadas en el entorno.**
+
+* Sistemas de administración de paquetes (📦 `packrat` - 📦 `renv`)
 
 * Binder
+
+**Replicar en entorno computacional completo incluyendo el sistema operativo y otras configuraciones**
 
 * Máquinas virtuales 
 
 * Contenedores
+
+.footnote[[The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
+
+
+---
+
+class: center
+
+# Sistema de administración de dependencias
+
+**Paquete `renv`**
+
+```{r echo = FALSE}
+knitr::include_graphics("images/renv.png")
+```
+.footnote[[Entornos Reproducibles - RStudio](https://environments.rstudio.com/)]
+---
+
+# Paquete `renv`
+
+
+1. 🏁 `renv::init()` Se crea una librería asociada al proyecto dentro de la carpeta `renv`.
+
+--
+2. 📦 Instalar paquetes *
+
+--
+3. 📸 `renv::snapshot()` Genera el archivo `renv.lock` con información de las dependencias al momento de hacer la instantánea (snapshot).
+
+--
+4. 🌱 `renv::restore()` reproduce el entorno!
+
+.footnote[[* Lee más sobre `renv` aquí](https://environments.rstudio.com/snapshot.html#pre-requisite-steps)]
+
+
 
 ---
 
@@ -215,7 +154,7 @@ knitr::include_graphics("images/binderlogo.png")
 .pull-left[
 ## Beneficios
 
-- Es relatiamente facil de usar
+- Es relativamente fácil de usar
 
 - Podes acceder a la información con solo un click
 
@@ -240,7 +179,7 @@ knitr::include_graphics("images/binderlogo.png")
 knitr::include_graphics("images/siberia.jpg")
 ```
 
-
+.footnote[[The Turing Way- BinderHub](https://the-turing-way.netlify.app/reproducible-research/binderhub.html?highlight=mybinder%20org)]
 
 ---
 
@@ -255,38 +194,64 @@ knitr::include_graphics("images/mybinder.png")
 
 ---
 
-# "Binderizando" tu proyecto 🌀
+## "Binderizando" tu proyecto 🌀
 
-Crear una versión Binderizada de un proyecto implica tres pasos clave que se explicarán en esta sección:
+1. Especificar el entorno computacional
+
+➕📄 **intall.R** 
+
+➕📄 **runtime.txt** )
+
+---
+
+2. Subir los archivos del proyecto en algún repositorio público 
+
+🗂 Por ejemplo: **GitHub o GitLab**
 
 --
-1. Especificar el entorno computacional. (**intall.R y runtime.txt** )
+
+3. Binderizar el proyecto (**mybinder.org**) ⏳ 
 
 --
 
-2. Subir los archivos del proyecto en algún lugar disponible al público (**GitHub o GitLab**)
+4. Usar la URL correcta 🔗
 
---
+---
 
-3. Binderizar el proyecto (**mybinder.org**)
+# ➕📄 `runtime.txt`
+
+> Especifica la versión de R y de los paquetes usados.
+
+Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capturadas en MRAN.
+
+
+`r-version-<YYYY>-<MM>-<DD>`
+
+---
+
+# ➕📄 `runtime.txt`
+
+
+```{r eval=FALSE, include=TRUE}
+r-3.6-2020-08-20
+```
+
+
+![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
 
 
 ---
 
-# 1. Especificar el entorno computacional
+## ➕📄 `install.R`  
 
-> runtime.txt
+> Este archivo debe contener una lista de todos los paquetes a ser instalados
 
-Especifica la version de R para que use Binder.
+```{r eval=FALSE, include=TRUE}
+install.packages("ggplot2")
+install.packages("shiny")
+```
 
-Para esto debes encontrar la fecha en que esta version fue capturada en MRAN e incluirla en el archivo como
-`r-<YYYY>-<MM>-<DD>`
 
-> install.R o DESCRIPTION (R/RStudio)
-
-Este archivo debe contener una lista de todos los paquetes a ser instalados
-
-`install.packages("tibble")`
 
 
 ---
@@ -294,15 +259,39 @@ Este archivo debe contener una lista de todos los paquetes a ser instalados
 # ¿Qué es MRAN? 📷
 
 
-Desde el 17 de septiembre de 2014, Microsoft toma una instantánea diaria 📸 de todo el repositorio de CRAN y la almacena en [MRAN](https://mran.microsoft.com/documents/rro/reproducibility#reproducibility). 
+Desde el 17 de septiembre de 2014, el servidor `checkpoint` toma una instantánea diaria 📸 a la medianoche UTC de todo el repositorio de CRAN y la almacena en [Microsoft R Archived Network (MRAN)](https://mran.microsoft.com/documents/rro/reproducibility#reproducibility). 
 
 Estas instantáneas han estado disponibles para la comunidad R desde entonces.
 
-Paquete `checkpoint` me permite recuperar las versiones en el repositorio de CRAN para un determinado día.
+--
+⚠ Los paquetes que no esta en CRAN, como los que estas disponibles solo en GitHub no son accesibles desde MRAN.
+--
+
+.footnote[[MRAN](https://mran.microsoft.com/)]
 
 ---
 
-# 2. Sube tu código a GitHub
+# Paquete `checkpoint`
+
+⏱  El  paquete `checkpoint` me permite recuperar las versiones en el repositorio de CRAN para un determinado día.
+
+
+```{r eval=FALSE, include=TRUE}
+library(checkpoint)
+checkpoint("YYYY-MM-DD")
+```
+
+
+.footnote[[Checkpoint](https://mran.microsoft.com/documents/rro/reproducibility#checkpointpkg)]
+---
+
+# 2. Sube tu código al repositorio
+
+
+```{r}
+knitr::include_graphics("repo_entorno.png")
+```
+
 
 
 ---
@@ -311,81 +300,81 @@ Paquete `checkpoint` me permite recuperar las versiones en el repositorio de CRA
 
 a. Dirígete a https://mybinder.org
 
-b. Pegue la URL del repositorio de GitHub del proyecto
+--
+
+b. Pega la URL del repositorio de GitHub del proyecto
 `https://github.com/<your-username>/<your-repository>`
 
+--
+
 c. Finalmente, haz clic en el botón de LAUNCH. 
-Esto le pedirá a mybinder.org que cree el entorno necesario para ejecutar el proyecto, tenga en cuenta que esto puede llevar varios minutos.
-
----
-
-# ¡Paciencia! Esto lleva un rato ⏳
-
-
----
-
-# Abrir tu proyecto con RStudio IDE
-
-
-Cambia el link 
-
-`https://mybinder.org/v2/gh/<usuario>/<repositorio>/<rama>?urlpath?rstudio`
-
-Ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+Esto le pedirá a mybinder.org que cree el entorno necesario para ejecutar el proyecto.
 
 ---
 
 class: center, middle, inverse
 
-# 🌀 Binderiza tu Shiny App 🌀
+# ¡Paciencia! Esto lleva un rato ⏳
 
----
 
-# Los pasos 1 y 2 son los mismos
 
-1. Subí tu app a una carpeta en tu repo de GitHub
-
-2. Especifica el entorno computacional
 
 
 
 ---
 
-# 3. Agrega el archivo `index.pynb`
+# URL para RStudio IDE 💻
 
-Lo descargas desde [acá]()
 
+`https://mybinder.org/v2/gh/<usuario>/<repositorio>/<rama>?urlpath?rstudio`
+
+🔗 ejemplo de repositorio: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+
+
+.footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
 ---
 
-# 4. Binderiza tu proyecto 🌀
+# URL para Shiny app ✨
 
-a. Dirígete a https://mybinder.org
-
-b. Pegue la URL del repositorio de GitHub del proyecto
-`https://github.com/<your-username>/<your-repository>`
-
-c. Finalmente, haz clic en el botón de LAUNCH. 
-
-
-¡Recorda que lleva un rato este paso! ⏳
-
-
----
-
-# ¡Listo!
-
-
-Tenes que llamar la app usando este link si tenes tu datos en github
 
 `https://mybinder.org/v2/gh/<usuario>/<repositorio>/<rama>?urlpath=shiny/<carpeta>/`
 
-Ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+🔗 ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+
+
+.footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
 
 ---
 
+# Volviendo al primer ejemplo
 
+
+*`tidyr` 1.0.0* Se incluyeron `pivot_longer()` y `pivot_wider()` 
+
+```{r echo=FALSE}
+knitr::include_graphics("images/tidyr.png")
+```
+
+---
+
+# Ejercicio
+
+Partiendo de un fork de mi repositorio:
+
+¿podrían modificar el código del primer ejercicio para hacerlo funcionar?
+
+![](https://media.giphy.com/media/xsF1FSDbjguis/giphy.gif)
+
+
+---
+
+class: inverse
 
 # Links
+
+* [CRAN Task View: Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html)
+
+* [Reproducibility in Production - Webinar](https://rstudio.com/resources/webinars/reproducibility-in-production/)
 
 * [Proyectos en R - R4DS](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects)
 
@@ -401,14 +390,23 @@ Ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=s
 
 * [Reproducible Research with R - ROpensci Call](https://ropensci.org/commcalls/2019-07-30/)
 
-* [Holepunch]()
+* [Putting the R into Reproducible Research - Anna Krystalli](https://annakrystalli.me/talks/r-in-repro-research.html#1)
+
+* [Demo renv package](https://environments.rstudio.com/snapshot.html#watch-a-video-demo-of-snapshot-and-restore-with-renv)
 
 ---
 
-class: center, middle
+class: center, middle, inverse
 
-# Thanks!
+# ¡Muchas gracias!
 
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+
+
+
+Web [florencia.netlify.app](florencia.netlify.app)
+
+Twitter [@cantoflor87](twitter.com/cantoflor_87)
+
+
+

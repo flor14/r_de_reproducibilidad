@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Entornos computacionales interactivos</title>
+    <title>Sharing reproducible and interactive environments in R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Florencia D’Andrea" />
     <meta name="date" content="2020-08-27" />
@@ -12,7 +12,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Entornos computacionales interactivos
+# Sharing reproducible and interactive environments in R
 ## Binder
 ### Florencia D’Andrea
 ### 2020-08-27
@@ -25,44 +25,37 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Desafío
+# Hello! 👋
 
-Te comparto este código en el que estoy trabajando ¿te funciona?
+Here I would like to share with you this code I am working on. Let me know if you have any problems.
 
 Abre el proyecto con Binder -&gt; 
 
 --
 
-**Problema 1**
+**Issue 1**
 
-Ruta de archivo absoluta 
+Absolute path 
 
 --
 
-**Problema 2**
+**Issue 2**
 
-Versión del paquete `tidyr 0.8.3` no incluye `pivot_longer()` y  `pivot_wider()` , funciones que recién se agregan en la versión 1.0.0
+Package version of `tidyr 0.8.3` does not include `pivot_longer()` and `pivot_wider()` functions added in `tidyr version 1.0.0`
+
+Use `sessionInfo()` to check this
 
 ---
 
 class: inverse, center, middle
 
-# ¿Es suficiente compartir el código y los datos para que un trabajo sea reproducible?
-
----
-
-# Herramientas para hacer tu trabajo reproducible
-
-
-
+# Would I have reproducible work only sharing the code and the data?
 
 ---
 
 class: middle
 
-&gt; "Packages, libraries, and specific versions of software is crucial information for reproducibility." 
-
-&gt; "Los paquetes, librerías y las versiones específicas de software es información crucial para la reproducibilidad."
+&gt; ####  "Packages, libraries, and specific versions of software is crucial information for reproducibility." 
 
 .footnote[[Nuest (2020)](http://www.dlib.org/dlib/january17/nuest/01nuest.html)]
 
@@ -70,49 +63,55 @@ class: middle
 
 class: center, middle, inverse
 
-# Hoy:
-# Entornos computacionales
+# Reproducible environments 
 
 
 ---
 
-## Hay varias formas de capturar entornos computacionales.
+## There are several tools to capture computational environments
 
-**Capturar solo el software y las versiones usadas en el entorno.**
+**Capture only the software and its versions used in an environment**
 
-* Sistemas de administración de paquetes (`packrat` - `renv`)
+* Package management systems (📦`packrat` -📦 `renv`)
 
 * Binder
 
-**Replicar en entorno computacional completo incluyendo el sistema operativo y otras configuraciones**
+**replicate an entire computational environment including the operating system and customised settings**
 
-* Máquinas virtuales 
+* Virtual machines 
 
-* Contenedores
+* Containers
 
+.footnote[[The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
 
 ---
 
 class: center
 
-# Sistema de administración de dependencias
+# Package management systems
 
-**Paquete `renv`**
+**`renv` package**
 
 ![](images/renv.png)&lt;!-- --&gt;
-.footnote[[Entornos Reproducibles - RStudio](https://environments.rstudio.com/)]
+.footnote[[Reproducible Environments - RStudio](https://environments.rstudio.com/)]
 ---
 
-# Paquete `renv`
+# `renv` package
+
+1. 🏁 `renv::init()` works by creating a new library. A library stores installed packages.
+
+--
+2. 📦 Install the packages *
+
+--
+
+3. 📸 `renv::snapshot()` creates a new file in your project titled `renv.lock`. The file contains all the information you need to communicate your project’s dependencies at the moment you call snapshot. 
+
+--
+4. 🌱 `renv::restore()` recreates the environment!
 
 
-* 🏁 `renv::init()` Se crea una librería asociada al proyecto dentro de la carpeta `renv`.
-
-* 📸 `renv::snapshot()` Genera el archivo `renv.lock` con información de las dependencias al momento de hacer la instantánea (snapshot).
-
-* 🔙 `renv::restore()` Se vuelve a un punto anterior.
-
-.footnote[[`renv`](https://environments.rstudio.com/snapshot.html#pre-requisite-steps)]
+.footnote[[* Read more about `renv` here](https://environments.rstudio.com/snapshot.html#pre-requisite-steps)]
 
 
 
@@ -120,7 +119,7 @@ class: center
 
 # Binder
 
-Una versión de un proyecto dentro de un entorno computacional reproducible con la cual se puede compartir e interactuar a través de un navegador web.
+Binder is a service which generates fully-functioning versions of projects from a git repository and serves them on the cloud. These “binderized” projects can be accessed and interacted with by others via a web browser. 
 
 
 ![](images/binderlogo.png)&lt;!-- --&gt;
@@ -129,76 +128,76 @@ Una versión de un proyecto dentro de un entorno computacional reproducible con 
 ---
 
 .pull-left[
-## Beneficios
+## Advantages
 
-- Es relativamente fácil de usar
+- Easy to use
 
-- Podes acceder a la información con solo un click
+- You can access the infomation with one click
 
-- Es gratuito
+- It is free
 ]
 .pull-right[
-## Limitaciones
+## Limitations
 
-- Potencia computacional
+- Computational power
 
-- Seguridad/privacidad (si usan mybinder.org)
+- Security/privacy (using `mybinder.org` BinderHub)
 
 - Also no FTP for connecting to some data.
 ]
 
 ---
 
-# ¿Qué es un BinderHub?
+# What is a BinderHub?
 
 
 ![](images/siberia.jpg)&lt;!-- --&gt;
 
-.footnote[[The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
+
+.footnote[[The Turing Way - BinderHub](https://the-turing-way.netlify.app/reproducible-research/binderhub.html?highlight=mybinder%20org)]
 
 ---
 
 # mybinder.org 
 
-Un BinderHub público y gratuito. Debido a que es público, no debe usarlo si su proyecto requiere información personal o confidencial (como contraseñas).
+A free, public BinderHub. Because it is public, you should not use it if your project requires personal or confidential information (such as passwords).
 
 ![](images/mybinder.png)&lt;!-- --&gt;
 
 
+
 ---
 
-## "Binderizando" tu proyecto 🌀
+## "Binderizing" your project 🌀
 
-1. Especificar el entorno computacional
+1. Specify the computational environment
 
 ➕📄 **intall.R** 
 
 ➕📄 **runtime.txt** )
 
----
+--
 
-2. Subir los archivos del proyecto en algún repositorio público 
-
-🗂 Por ejemplo: **GitHub o GitLab**
+2. Upload the project files to a publicly available repository hosting service, such as **GitHub / GitLab**
 
 --
 
-3. Binderizar el proyecto (**mybinder.org**) ⏳ 
+3. "Binderize" the project (**mybinder.org**) ⏳ 
 
 --
 
-4. Usar la URL correcta
+4. Use the correct URL 🔗
 
 ---
 
 # ➕📄 `runtime.txt`
 
-&gt; Especifica la versión de R y de los paquetes usados.
+&gt; Specify the R and package versions used
 
-Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capturadas en MRAN.
+For this you must choose a date where the versions of your packages are captured in MRAN.
 
 
-`r-version-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;`
+**`r-version-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;`**
 
 ---
 
@@ -207,18 +206,17 @@ Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capt
 
 
 ```r
-r-3.6-2020-08-20
+r-3.6-2020-08-20 #r-version-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;
 ```
 
 
 ![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
 
-
 ---
 
 ## ➕📄 `install.R`  
 
-&gt; Este archivo debe contener una lista de todos los paquetes a ser instalados
+&gt; This file should have listed all of the packages to be installed 
 
 
 ```r
@@ -231,37 +229,37 @@ install.packages("shiny")
 
 ---
 
-# ¿Qué es MRAN? 📷
+# What is MRAN? 📷
 
+Since September 17th, 2014, the checkpoint server has been taking a daily snapshot 📸 at precisely midnight UTC of the entire CRAN repository and storing it on [Microsoft R Archived Network (MRAN)](https://mran.microsoft.com/documents/rro/reproducibility#reproducibility).  
 
-Desde septiembre de 2014, Microsoft toma una instantánea diaria 📸 de todo el repositorio de CRAN y la almacena en [MRAN](https://mran.microsoft.com/documents/rro/reproducibility#reproducibility). 
+These snapshots have been available to the R community ever since.
 
-Estas instantáneas han estado disponibles para la comunidad R desde entonces.
 
 --
-⚠ Los paquetes que no esta en CRAN, como los que estas disponibles solo en GitHub no son accesibles desde MRAN.
+&gt; ⚠ Non-CRAN packages, such as those available on GitHub, are not part of the snapshot process.
 --
 
 .footnote[[MRAN](https://mran.microsoft.com/)]
 
 ---
 
-# Paquete `checkpoint`
+# `checkpoint` package
 
-⏱  El  paquete `checkpoint` me permite recuperar las versiones en el repositorio de CRAN para un determinado día.
+⏱  E`checkpoint` packagea llows you to install packages as they existed on CRAN on a specific snapshot date as if you had a CRAN time machine.
 
 
 
 ```r
 library(checkpoint)
-checkpoint("YYYY-MM-DD")
+checkpoint("YYYY-MM-DD") 
 ```
 
 
-.footnote[[Checkpoint](https://mran.microsoft.com/documents/rro/reproducibility#checkpointpkg)]
+.footnote[[`checkpoint` package](https://mran.microsoft.com/documents/rro/reproducibility#checkpointpkg)]
 ---
 
-# 2. Sube tu código al repositorio
+# 2. Upload your code to the repository
 
 
 
@@ -275,25 +273,24 @@ knitr::include_graphics("repo_entorno.png")
 
 ---
 
-# 3. Binderiza tu proyecto 🌀
+# 3. "Binderize" your project 🌀
 
-a. Dirígete a https://mybinder.org
+a. Go to https://mybinder.org
 
 --
 
-b. Pega la URL del repositorio de GitHub del proyecto
+b. Paste the repository URL 
 `https://github.com/&lt;your-username&gt;/&lt;your-repository&gt;`
 
 --
 
-c. Finalmente, haz clic en el botón de LAUNCH. 
-Esto le pedirá a mybinder.org que cree el entorno necesario para ejecutar el proyecto, tenga en cuenta que esto puede llevar varios minutos.
+c. Finally, click the `Launch` button. 
 
 ---
 
 class: center, middle, inverse
 
-# ¡Paciencia! Esto lleva un rato ⏳
+# Patience! This could take a while ⏳
 
 
 
@@ -302,43 +299,48 @@ class: center, middle, inverse
 
 ---
 
-# URL para RStudio IDE 💻
+# RStudio IDE URL  💻
 
 
-`https://mybinder.org/v2/gh/&lt;usuario&gt;/&lt;repositorio&gt;/&lt;rama&gt;?urlpath?rstudio`
+`https://mybinder.org/v2/gh/&lt;user&gt;/&lt;repository&gt;/&lt;branch&gt;?urlpath?rstudio`
 
-Ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+Example 🔗:
+https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
 
 
 .footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
 ---
 
-# URL para Shiny app ✨
+# Shiny app URL  ✨
 
 
-`https://mybinder.org/v2/gh/&lt;usuario&gt;/&lt;repositorio&gt;/&lt;rama&gt;?urlpath=shiny/&lt;carpeta&gt;/`
+`https://mybinder.org/v2/gh/&lt;user&gt;/&lt;repository&gt;/&lt;branch&gt;?urlpath=shiny/&lt;folder&gt;/`
 
-Ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+Example 🔗:
+https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
 
 
 .footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
 
 ---
 
-# Volviendo al primer ejemplo
+# Going back to the first example
 
 
-*`tidyr` 1.0.0* Se incluyeron `pivot_longer()` y `pivot_wider()` 
+* `tidyr` 1.0.0 * Included` pivot_longer () `and` pivot_wider () `
 
 ![](images/tidyr.png)&lt;!-- --&gt;
 
 ---
 
-# Ejercicio
+# Exercise
 
-Partiendo de un fork de mi repositorio, ¿podrían modificar el código del primer ejercicio para hacerlo funcionar?
+Starting from a fork of my repository:
+
+Could you modify the code from the first exercise to make it work?
 
 ![](https://media.giphy.com/media/xsF1FSDbjguis/giphy.gif)
+
 
 
 ---
@@ -373,7 +375,7 @@ class: inverse
 
 class: center, middle, inverse
 
-# ¡Muchas gracias!
+# ¡Thank you!
 
 
 
@@ -382,6 +384,7 @@ class: center, middle, inverse
 Web [florencia.netlify.app](florencia.netlify.app)
 
 Twitter [@cantoflor87](twitter.com/cantoflor_87)
+
 
 
 

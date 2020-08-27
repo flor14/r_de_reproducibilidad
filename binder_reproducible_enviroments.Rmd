@@ -1,0 +1,412 @@
+---
+title: "Sharing reproducible and interactive environments in R"
+subtitle: "Binder"  
+author: 
+  - "Florencia D'Andrea"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE, echo = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#01CC99",
+  secondary_color = "#C3EBE2",
+  inverse_header_color = "#2E414D", 
+  code_inline_color = "#179c55",
+    code_font_family = "GlacialIndifferenceRegular",
+  code_font_url = "https://fontlibrary.org/face/glacial-indifference",
+  text_font_family = "GlacialIndifferenceRegular",
+  text_font_size = "25px",
+  text_font_url = "https://fontlibrary.org/face/glacial-indifference",
+  header_font_family = "Sifonn",
+  header_font_url = "https://fonts.cdnfonts.com/css/sifonn",
+)
+
+```
+---
+
+# Hello! 👋
+
+Here I would like to share with you this code I am working on. Let me know if you have any problems.
+
+Abre el proyecto con Binder -> 
+
+--
+
+**Issue 1**
+
+Absolute path 
+
+--
+
+**Issue 2**
+
+Package version of `tidyr 0.8.3` does not include `pivot_longer()` and `pivot_wider()` functions added in `tidyr version 1.0.0`
+
+Use `sessionInfo()` to check this
+
+---
+
+class: inverse, center, middle
+
+# Would I have reproducible work only sharing the code and the data?
+
+---
+
+class: middle
+
+> ####  "Packages, libraries, and specific versions of software is crucial information for reproducibility." 
+
+.footnote[[Nuest (2020)](http://www.dlib.org/dlib/january17/nuest/01nuest.html)]
+
+---
+
+class: center, middle, inverse
+
+# Reproducible environments 
+
+
+---
+
+## There are several tools to capture computational environments
+
+**Capture only the software and its versions used in an environment**
+
+* Package management systems (📦`packrat` -📦 `renv`)
+
+* Binder
+
+**replicate an entire computational environment including the operating system and customised settings**
+
+* Virtual machines 
+
+* Containers
+
+.footnote[[The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
+
+---
+
+class: center
+
+# Package management systems
+
+**`renv` package**
+
+```{r echo = FALSE}
+knitr::include_graphics("images/renv.png")
+```
+.footnote[[Reproducible Environments - RStudio](https://environments.rstudio.com/)]
+---
+
+# `renv` package
+
+1. 🏁 `renv::init()` works by creating a new library. A library stores installed packages.
+
+--
+2. 📦 Install the packages *
+
+--
+
+3. 📸 `renv::snapshot()` creates a new file in your project titled `renv.lock`. The file contains all the information you need to communicate your project’s dependencies at the moment you call snapshot. 
+
+--
+4. 🌱 `renv::restore()` recreates the environment!
+
+
+.footnote[[* Read more about `renv` here](https://environments.rstudio.com/snapshot.html#pre-requisite-steps)]
+
+
+
+---
+
+# Binder
+
+Binder is a service which generates fully-functioning versions of projects from a git repository and serves them on the cloud. These “binderized” projects can be accessed and interacted with by others via a web browser. 
+
+
+```{r echo = FALSE}
+knitr::include_graphics("images/binderlogo.png")
+```
+
+
+---
+
+.pull-left[
+## Advantages
+
+- Easy to use
+
+- You can access the infomation with one click
+
+- It is free
+]
+.pull-right[
+## Limitations
+
+- Computational power
+
+- Security/privacy (using `mybinder.org` BinderHub)
+
+- Also no FTP for connecting to some data.
+]
+
+---
+
+# What is a BinderHub?
+
+
+```{r echo = FALSE}
+knitr::include_graphics("images/siberia.jpg")
+```
+
+
+.footnote[[The Turing Way - BinderHub](https://the-turing-way.netlify.app/reproducible-research/binderhub.html?highlight=mybinder%20org)]
+
+---
+
+# mybinder.org 
+
+A free, public BinderHub. Because it is public, you should not use it if your project requires personal or confidential information (such as passwords).
+
+```{r echo=FALSE}
+knitr::include_graphics("images/mybinder.png")
+```
+
+
+
+---
+
+## "Binderizing" your project 🌀
+
+1. Specify the computational environment
+
+➕📄 **intall.R** 
+
+➕📄 **runtime.txt** )
+
+--
+
+2. Upload the project files to a publicly available repository hosting service, such as **GitHub / GitLab**
+
+--
+
+3. "Binderize" the project (**mybinder.org**) ⏳ 
+
+--
+
+4. Use the correct URL 🔗
+
+---
+
+# ➕📄 `runtime.txt`
+
+> Specify the R and package versions used
+
+For this you must choose a date where the versions of your packages are captured in MRAN.
+
+
+**`r-version-<YYYY>-<MM>-<DD>`**
+
+---
+
+# ➕📄 `runtime.txt`
+
+
+```{r eval=FALSE, include=TRUE}
+r-3.6-2020-08-20 #r-version-<YYYY>-<MM>-<DD>
+```
+
+
+![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
+
+---
+
+## ➕📄 `install.R`  
+
+> This file should have listed all of the packages to be installed 
+
+```{r eval=FALSE, include=TRUE}
+install.packages("ggplot2")
+install.packages("shiny")
+```
+
+
+
+
+---
+
+# What is MRAN? 📷
+
+Since September 17th, 2014, the checkpoint server has been taking a daily snapshot 📸 at precisely midnight UTC of the entire CRAN repository and storing it on [Microsoft R Archived Network (MRAN)](https://mran.microsoft.com/documents/rro/reproducibility#reproducibility).  
+
+These snapshots have been available to the R community ever since.
+
+
+--
+> ⚠ Non-CRAN packages, such as those available on GitHub, are not part of the snapshot process.
+--
+
+.footnote[[MRAN](https://mran.microsoft.com/)]
+
+---
+
+# `checkpoint` package
+
+⏱  E`checkpoint` packagea llows you to install packages as they existed on CRAN on a specific snapshot date as if you had a CRAN time machine.
+
+
+```{r eval=FALSE, include=TRUE}
+library(checkpoint)
+checkpoint("YYYY-MM-DD") 
+```
+
+
+.footnote[[`checkpoint` package](https://mran.microsoft.com/documents/rro/reproducibility#checkpointpkg)]
+---
+
+# 2. Upload your code to the repository
+
+
+```{r}
+knitr::include_graphics("repo_entorno.png")
+```
+
+
+
+---
+
+# 3. "Binderize" your project 🌀
+
+a. Go to https://mybinder.org
+
+--
+
+b. Paste the repository URL 
+`https://github.com/<your-username>/<your-repository>`
+
+--
+
+c. Finally, click the `Launch` button. 
+
+---
+
+class: center, middle, inverse
+
+# Patience! This could take a while ⏳
+
+
+
+
+
+
+---
+
+# RStudio IDE URL  💻
+
+You should call the binderized project using this template link
+
+`https://mybinder.org/v2/gh/<user>/<repository>/<branch>?urlpath?rstudio`
+
+Example 🔗:
+https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+
+
+.footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
+---
+
+# Shiny app URL  ✨
+
+You should call the binderized project using this template link
+
+`https://mybinder.org/v2/gh/<user>/<repository>/<branch>?urlpath=shiny/<folder>/`
+
+Example 🔗:
+https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+
+
+.footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
+
+---
+class: middle, inverse, center 
+
+# Practice 💪
+
+---
+
+# Going back to the first example
+
+* `tidyr` 1.0.0 * Included` pivot_longer () `and` pivot_wider () `
+
+```{r echo=FALSE}
+knitr::include_graphics("images/tidyr.png")
+```
+
+---
+
+# Exercise
+
+Starting from a fork of my repository:
+
+Could you modify the code from the first exercise to make it work?
+
+![](https://media.giphy.com/media/xsF1FSDbjguis/giphy.gif)
+
+
+
+---
+
+class: inverse
+
+# Links
+
+* [CRAN Task View: Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html)
+
+* [Reproducibility in Production - Webinar](https://rstudio.com/resources/webinars/reproducibility-in-production/)
+
+* [Proyectos en R - R4DS](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects)
+
+* [The Turing Way Book](https://the-turing-way.netlify.app/)
+
+* [Reproducible Environments - RStudio](https://environments.rstudio.com/)
+
+* [Time_Travel_R (Webinar) - Sean Lopp](https://rstudio.com/resources/webinars/time-travel-r/)
+
+* [renv: Project Environments with R - RStudio blog](https://blog.rstudio.com/2019/11/06/renv-project-environments-for-r/)
+
+* [Rrtools]()
+
+* [Reproducible Research with R - ROpensci Call](https://ropensci.org/commcalls/2019-07-30/)
+
+* [Putting the R into Reproducible Research - Anna Krystalli](https://annakrystalli.me/talks/r-in-repro-research.html#1)
+
+* [Demo renv package](https://environments.rstudio.com/snapshot.html#watch-a-video-demo-of-snapshot-and-restore-with-renv)
+
+---
+
+class: center, middle, inverse
+
+# ¡Thank you!
+
+
+
+
+
+Web [florencia.netlify.app](florencia.netlify.app)
+
+Twitter [@cantoflor87](twitter.com/cantoflor_87)
+
+
+
+
