@@ -1,5 +1,5 @@
 ---
-title: "Entornos computacionales interactivos"
+title: "Compartiendo entornos reproducibles e interactivos en R con Binder"
 subtitle: "Binder"  
 author: 
   - "Florencia D'Andrea"
@@ -41,7 +41,7 @@ style_duo_accent(
 
 Te comparto este código en el que estoy trabajando ¿te funciona?
 
-Abre el proyecto con Binder -> 
+Abre el proyecto -> [![badge](https://img.shields.io/badge/run-binder-E66581.svg?logo=data:image/png;base64,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)](https://mybinder.org/v2/gh/flor14/reproducibilidad_meetup/master?urlpath=rstudio)
 
 --
 
@@ -61,20 +61,13 @@ class: inverse, center, middle
 
 # ¿Es suficiente compartir el código y los datos para que un trabajo sea reproducible?
 
----
-
-# Herramientas para hacer tu trabajo reproducible
-
-
-
 
 ---
 
 class: middle
+ 
 
-> "Packages, libraries, and specific versions of software is crucial information for reproducibility." 
-
-> "Los paquetes, librerías y las versiones específicas de software es información crucial para la reproducibilidad."
+> **"Los paquetes, librerías y las versiones específicas de software es información crucial para la reproducibilidad."**
 
 .footnote[[Nuest (2020)](http://www.dlib.org/dlib/january17/nuest/01nuest.html)]
 
@@ -89,19 +82,19 @@ class: center, middle, inverse
 ---
 
 ## Hay varias formas de capturar entornos computacionales.
-
+--
 **Capturar solo el software y las versiones usadas en el entorno.**
-
+--
 * Sistemas de administración de paquetes (📦 `packrat` - 📦 `renv`)
-
+--
 * Binder
-
+--
 **Replicar en entorno computacional completo incluyendo el sistema operativo y otras configuraciones**
 
 * Máquinas virtuales 
 
 * Contenedores
-
+--
 .footnote[[The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
 
 
@@ -141,7 +134,7 @@ knitr::include_graphics("images/renv.png")
 
 # Binder
 
-Una versión de un proyecto dentro de un entorno computacional reproducible con la cual se puede compartir e interactuar a través de un navegador web.
+Una versión de un proyecto dentro de un entorno computacional reproducible que se puede compartir y permite interación a través de un navegador web.
 
 
 ```{r echo = FALSE}
@@ -167,7 +160,7 @@ knitr::include_graphics("images/binderlogo.png")
 
 - Seguridad/privacidad (si usan mybinder.org)
 
-- Also no FTP for connecting to some data.
+- Dependes de paquetes subidos a CRAN
 ]
 
 ---
@@ -200,10 +193,10 @@ knitr::include_graphics("images/mybinder.png")
 
 ➕📄 **intall.R** 
 
-➕📄 **runtime.txt** )
+➕📄 **runtime.txt**
 
----
 
+--
 2. Subir los archivos del proyecto en algún repositorio público 
 
 🗂 Por ejemplo: **GitHub o GitLab**
@@ -215,29 +208,6 @@ knitr::include_graphics("images/mybinder.png")
 --
 
 4. Usar la URL correcta 🔗
-
----
-
-# ➕📄 `runtime.txt`
-
-> Especifica la versión de R y de los paquetes usados.
-
-Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capturadas en MRAN.
-
-
-`r-version-<YYYY>-<MM>-<DD>`
-
----
-
-# ➕📄 `runtime.txt`
-
-
-```{r eval=FALSE, include=TRUE}
-r-3.6-2020-08-20
-```
-
-
-![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
 
 
 ---
@@ -271,7 +241,7 @@ Estas instantáneas han estado disponibles para la comunidad R desde entonces.
 
 ---
 
-# Paquete `checkpoint`
+# EXTRA: Paquete `checkpoint`
 
 ⏱  El  paquete `checkpoint` me permite recuperar las versiones en el repositorio de CRAN para un determinado día.
 
@@ -285,6 +255,27 @@ checkpoint("YYYY-MM-DD")
 .footnote[[Checkpoint](https://mran.microsoft.com/documents/rro/reproducibility#checkpointpkg)]
 ---
 
+# ➕📄 `runtime.txt`
+
+> Especifica la versión de R y de los paquetes usados.
+
+Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capturadas en MRAN.
+
+
+`r-version-<YYYY>-<MM>-<DD>`
+
+---
+
+# ➕📄 `runtime.txt`
+
+
+```{r eval=FALSE, include=TRUE}
+r-3.6-2020-08-20
+```
+
+
+![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
+
 # 2. Sube tu código al repositorio
 
 
@@ -296,14 +287,14 @@ knitr::include_graphics("repo_entorno.png")
 
 ---
 
-# 3. Binderiza tu proyecto 🌀
+# 3. "Binderiza" tu proyecto 🌀
 
 a. Dirígete a https://mybinder.org
 
 --
 
 b. Pega la URL del repositorio de GitHub del proyecto
-`https://github.com/<your-username>/<your-repository>`
+`https://github.com/<usuario>/<repositorio>`
 
 --
 
@@ -328,7 +319,9 @@ class: center, middle, inverse
 
 `https://mybinder.org/v2/gh/<usuario>/<repositorio>/<rama>?urlpath?rstudio`
 
-🔗 ejemplo de repositorio: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+🔗 ejemplo:
+
+http://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=rstudio
 
 
 .footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
@@ -339,7 +332,9 @@ class: center, middle, inverse
 
 `https://mybinder.org/v2/gh/<usuario>/<repositorio>/<rama>?urlpath=shiny/<carpeta>/`
 
-🔗 ejemplo de mi app: https://mybinder.org/v2/gh/flor14/test_shiny/master?urlpath=shiny/test/
+🔗 ejemplo de mi app: 
+
+https://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=shiny/elipse/
 
 
 .footnote[[Ejemplos en el repositorio de Binder](https://github.com/binder-examples/r)]
@@ -354,6 +349,12 @@ class: center, middle, inverse
 ```{r echo=FALSE}
 knitr::include_graphics("images/tidyr.png")
 ```
+
+---
+
+class: inverse, middle, center
+
+¡Practiquemos!
 
 ---
 
