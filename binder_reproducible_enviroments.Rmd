@@ -82,19 +82,16 @@ class: center, middle, inverse
 
 ## There are several tools to capture computational environments
 
-**Capture only the software and its versions used in an environment**
 
 * Package management systems (📦`packrat` -📦 `renv`)
 
 * Binder
 
-**replicate an entire computational environment including the operating system and customised settings**
-
 * Virtual machines 
 
 * Containers
 
-.footnote[[The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
+.footnote[[More details in The Turing Way Handbok](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
 
 ---
 
@@ -133,7 +130,7 @@ knitr::include_graphics("images/renv.png")
 
 # Binder
 
-Binder is a service which generates fully-functioning versions of projects from a git repository and serves them on the cloud. These “binderized” projects can be accessed and interacted with by others via a web browser. 
+Binder is an open source web service that lets users create sharable, interactive, reproducible environments in the cloud.
 
 
 ```{r echo = FALSE}
@@ -208,30 +205,6 @@ knitr::include_graphics("images/mybinder.png")
 
 4. Use the correct URL 🔗
 
----
-
-# ➕📄 `runtime.txt`
-
-> Specify the R and package versions used
-
-For this you must choose a date where the versions of your packages are captured in MRAN.
-
-
-**`r-version-<YYYY>-<MM>-<DD>`**
-
----
-
-# ➕📄 `runtime.txt`
-
-
-```{r eval=FALSE, include=TRUE}
-r-3.6-2020-08-20 #r-version-<YYYY>-<MM>-<DD>
-```
-
-
-![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
-
----
 
 ## ➕📄 `install.R`  
 
@@ -262,7 +235,7 @@ These snapshots have been available to the R community ever since.
 
 ---
 
-# `checkpoint` package
+# EXTRA: `checkpoint` package
 
 ⏱  E`checkpoint` packagea llows you to install packages as they existed on CRAN on a specific snapshot date as if you had a CRAN time machine.
 
@@ -275,6 +248,31 @@ checkpoint("YYYY-MM-DD")
 
 .footnote[[`checkpoint` package](https://mran.microsoft.com/documents/rro/reproducibility#checkpointpkg)]
 ---
+---
+
+# ➕📄 `runtime.txt`
+
+> Specify the R and package versions used
+
+For this you must choose a date where the versions of your packages are captured in MRAN.
+
+
+**`r-version-<YYYY>-<MM>-<DD>`**
+
+---
+
+# ➕📄 `runtime.txt`
+
+
+```{r eval=FALSE, include=TRUE}
+r-3.6-2020-08-20 #r-version-<YYYY>-<MM>-<DD>
+```
+
+
+![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
+
+---
+
 
 # 2. Upload your code to the repository
 

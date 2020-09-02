@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Compartiendo entornos reproducibles e interactivos en R con Binder</title>
+    <title>Reproducibilidad en R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Florencia D’Andrea" />
-    <meta name="date" content="2020-08-30" />
+    <meta name="date" content="2020-09-02" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -12,12 +12,24 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Compartiendo entornos reproducibles e interactivos en R con Binder
-## Binder
+# Reproducibilidad en R
+## Compartiendo entornos interactivos con Binder
 ### Florencia D’Andrea
-### 2020-08-30
+### 2020-09-02
 
 ---
+
+
+
+
+
+
+
+class: center, middle
+
+# Licencia
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;
 
 
 
@@ -47,43 +59,33 @@ Versión del paquete `tidyr 0.8.3` no incluye `pivot_longer()` y  `pivot_wider()
 
 class: inverse, center, middle
 
-# ¿Es suficiente compartir el código y los datos para que un trabajo sea reproducible?
+# ¿Fue suficiente compartir el código y los datos para que mi análisis fuese reproducible?
 
-
----
-
-class: middle
- 
-
-&gt; **"Los paquetes, librerías y las versiones específicas de software es información crucial para la reproducibilidad."**
-
-.footnote[[Nuest (2020)](http://www.dlib.org/dlib/january17/nuest/01nuest.html)]
 
 ---
 
 class: center, middle, inverse
 
-# Hoy:
+
 # Entornos computacionales
 
 
 ---
 
-## Hay varias formas de capturar entornos computacionales.
---
-**Capturar solo el software y las versiones usadas en el entorno.**
---
+## Hay varias formas de capturar entornos computacionales
+
+
 * Sistemas de administración de paquetes (📦 `packrat` - 📦 `renv`)
---
+
 * Binder
---
-**Replicar en entorno computacional completo incluyendo el sistema operativo y otras configuraciones**
 
 * Máquinas virtuales 
 
 * Contenedores
+
 --
-.footnote[[The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
+
+.footnote[[Más info aquí -&gt; The Turing Way](https://www.turing.ac.uk/research/research-projects/turing-way-handbook-reproducible-data-science)]
 
 
 ---
@@ -101,26 +103,42 @@ class: center
 # Paquete `renv`
 
 
-1. 🏁 `renv::init()` Se crea una librería asociada al proyecto dentro de la carpeta `renv`.
+-  🏁 `renv::init()` Se crea una librería asociada al proyecto dentro de la carpeta `renv`.
 
 --
-2. 📦 Instalar paquetes *
+
+-  📸 `renv::snapshot()` Genera el archivo `renv.lock` con información de las dependencias al momento de hacer la instantánea (snapshot).
 
 --
-3. 📸 `renv::snapshot()` Genera el archivo `renv.lock` con información de las dependencias al momento de hacer la instantánea (snapshot).
-
---
-4. 🌱 `renv::restore()` reproduce el entorno!
+-  🌱 `renv::restore()` reproduce el entorno!
 
 .footnote[[* Lee más sobre `renv` aquí](https://environments.rstudio.com/snapshot.html#pre-requisite-steps)]
 
+---
+
+class: center
+
+# Binder
+
+
+[Jupyter Notebooks](https://mybinder.org/v2/gh/binder-examples/r/master?filepath=index.ipynb)
+
+[Shiny](https://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=shiny/elipse/)
+
+[RStudio](http://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=rstudio)
+
+[Tutorial 1 - Ines Montani](https://noamross.github.io/gams-in-r-course/)
+
+[Tutorial 2 - LearnR](https://mybinder.org/v2/gh/syoh/learnr-tutorial/master?urlpath=shiny/test1/)
+
+[Articulo reproducible - Stencila + Binder](https://elifesciences.org/articles/30274/executable)
 
 
 ---
 
 # Binder
 
-Una versión de un proyecto dentro de un entorno computacional reproducible que se puede compartir y permite interación a través de un navegador web.
+Binder es un servicio web open source que permite a los usuarios crear entornos interactivos y reproducibles en la nube.
 
 
 ![](images/binderlogo.png)&lt;!-- --&gt;
@@ -149,18 +167,18 @@ Una versión de un proyecto dentro de un entorno computacional reproducible que 
 
 ---
 
-# ¿Qué es un BinderHub?
+class: inverse, middle, center
+
+## ☁💻☁
+### El objetivo de Binder es reducir la barrera a la interactividad y permitir a los usuarios utilizar código alojado en proveedores de repositorios como GitHub.
 
 
-![](images/siberia.jpg)&lt;!-- --&gt;
-
-.footnote[[The Turing Way- BinderHub](https://the-turing-way.netlify.app/reproducible-research/binderhub.html?highlight=mybinder%20org)]
 
 ---
 
 # mybinder.org 
 
-Un BinderHub público y gratuito. Debido a que es público, no debe usarlo si su proyecto requiere información personal o confidencial (como contraseñas).
+[mybinder.org](mybinder.org) es una implementación de la tecnología BinderHub. Se administra como un **servicio público** para aquellos que deseen compartir sus **repositorios interactivos**.
 
 ![](images/mybinder.png)&lt;!-- --&gt;
 
@@ -169,26 +187,33 @@ Un BinderHub público y gratuito. Debido a que es público, no debe usarlo si su
 
 ## "Binderizando" tu proyecto 🌀
 
-1. Especificar el entorno computacional
+**1-** Especificar el entorno computacional
 
 ➕📄 **intall.R** 
 
 ➕📄 **runtime.txt**
 
-
 --
-2. Subir los archivos del proyecto en algún repositorio público 
+
+**2-** Subir los archivos del proyecto en algún repositorio público 
 
 🗂 Por ejemplo: **GitHub o GitLab**
 
 --
 
-3. Binderizar el proyecto (**mybinder.org**) ⏳ 
+**3-** "Binderizar" el proyecto (**mybinder.org**) ⏳ 
 
 --
 
-4. Usar la URL correcta 🔗
+**4-** Usar la URL correcta 🔗
 
+
+---
+
+class: middle, center, inverse
+
+## ☁💻☁
+# Demo
 
 ---
 
@@ -212,10 +237,11 @@ install.packages("shiny")
 
 Desde el 17 de septiembre de 2014, el servidor `checkpoint` toma una instantánea diaria 📸 a la medianoche UTC de todo el repositorio de CRAN y la almacena en [Microsoft R Archived Network (MRAN)](https://mran.microsoft.com/documents/rro/reproducibility#reproducibility). 
 
-Estas instantáneas han estado disponibles para la comunidad R desde entonces.
 
 --
-⚠ Los paquetes que no esta en CRAN, como los que estas disponibles solo en GitHub no son accesibles desde MRAN.
+
+&gt; ⚠ Los paquetes que no esta en CRAN, como los que estas disponibles solo en GitHub no son accesibles desde MRAN.
+
 --
 
 .footnote[[MRAN](https://mran.microsoft.com/)]
@@ -244,7 +270,7 @@ checkpoint("YYYY-MM-DD")
 Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capturadas en MRAN.
 
 
-`r-version-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;`
+**`r-version-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;`**
 
 ---
 
@@ -253,21 +279,17 @@ Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capt
 
 
 ```r
-r-3.6-2020-08-20
+r-3.6-2019-01-20
 ```
 
 
 ![](https://media.giphy.com/media/dgEIhYAo3lZiE/giphy.gif)
+---
 
 # 2. Sube tu código al repositorio
 
 
-
-```r
-knitr::include_graphics("repo_entorno.png")
-```
-
-![](repo_entorno.png)&lt;!-- --&gt;
+![](images/repo_entorno.png)&lt;!-- --&gt;
 
 
 
@@ -287,6 +309,11 @@ b. Pega la URL del repositorio de GitHub del proyecto
 c. Finalmente, haz clic en el botón de LAUNCH. 
 Esto le pedirá a mybinder.org que cree el entorno necesario para ejecutar el proyecto.
 
+
+
+
+![](images/launch.png)&lt;!-- --&gt;
+
 ---
 
 class: center, middle, inverse
@@ -303,7 +330,9 @@ class: center, middle, inverse
 # URL para RStudio IDE 💻
 
 
-`https://mybinder.org/v2/gh/&lt;usuario&gt;/&lt;repositorio&gt;/&lt;rama&gt;?urlpath?rstudio`
+➕**`?urlpath=rstudio`**
+
+`https://mybinder.org/v2/gh/&lt;usuario&gt;/&lt;repositorio&gt;/&lt;rama&gt;?urlpath=rstudio`
 
 🔗 ejemplo:
 
@@ -314,6 +343,8 @@ http://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=rs
 ---
 
 # URL para Shiny app ✨
+
+➕**`?urlpath=shiny/&lt;carpeta&gt;/`**
 
 
 `https://mybinder.org/v2/gh/&lt;usuario&gt;/&lt;repositorio&gt;/&lt;rama&gt;?urlpath=shiny/&lt;carpeta&gt;/`
@@ -327,26 +358,46 @@ https://mybinder.org/v2/gh/flor14/shiny_reproducibilidad_meetup/master?urlpath=s
 
 ---
 
-# Volviendo al primer ejemplo
+# Tutoriales 💻👩
 
 
-*`tidyr` 1.0.0* Se incluyeron `pivot_longer()` y `pivot_wider()` 
+* [Ines Montani](https://github.com/ines/course-starter-r)
 
-![](images/tidyr.png)&lt;!-- --&gt;
+* [LearnR - Sang-Yun Oh blog post](https://syoh.org/learnr-tutorial/)
+
+
+
+---
+
+# Algo más
+
+✅ Paquete [Holepunch](https://karthik.github.io/holepunch/articles/getting_started.html)
+
+
+✅ Instalación más rápida
+
+ [r-conda](https://github.com/binder-examples/r-conda)
+ 
+
+✅ [Más info sobre Binder](https://mybinder.readthedocs.io/en/latest/faq.html)
+
+--
+
+🐳 Cambios en términos de servicio de Docker el 1 de Noviembre. Falta de actividad por 6 meses podría dejar links inactivos.
+
+❓discourse.jupyter.org
+
 
 ---
 
 class: inverse, middle, center
 
-¡Practiquemos!
+# ¡Practiquemos! 💪
 
 ---
 
 # Ejercicio
 
-Partiendo de un fork de mi repositorio:
-
-¿podrían modificar el código del primer ejercicio para hacerlo funcionar?
 
 ![](https://media.giphy.com/media/xsF1FSDbjguis/giphy.gif)
 
@@ -355,25 +406,17 @@ Partiendo de un fork de mi repositorio:
 
 class: inverse
 
-# Links
+# Links 🔗
 
-* [CRAN Task View: Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html)
+* [Binder 2.0 - Reproducible, interactive, sharable environments for science at scale](https://pdfs.semanticscholar.org/c043/bef741a9616d1144e0205ac21ceae881485d.pdf)
 
 * [Reproducibility in Production - Webinar](https://rstudio.com/resources/webinars/reproducibility-in-production/)
-
-* [Proyectos en R - R4DS](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects)
 
 * [The Turing Way Book](https://the-turing-way.netlify.app/)
 
 * [Reproducible Environments - RStudio](https://environments.rstudio.com/)
 
-* [Time_Travel_R (Webinar) - Sean Lopp](https://rstudio.com/resources/webinars/time-travel-r/)
-
 * [renv: Project Environments with R - RStudio blog](https://blog.rstudio.com/2019/11/06/renv-project-environments-for-r/)
-
-* [Rrtools]()
-
-* [Reproducible Research with R - ROpensci Call](https://ropensci.org/commcalls/2019-07-30/)
 
 * [Putting the R into Reproducible Research - Anna Krystalli](https://annakrystalli.me/talks/r-in-repro-research.html#1)
 
@@ -381,8 +424,9 @@ class: inverse
 
 ---
 
-class: center, middle, inverse
+class: center, middle
 
+# ♻
 # ¡Muchas gracias!
 
 
