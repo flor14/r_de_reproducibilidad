@@ -277,8 +277,8 @@ r-3.6-2020-08-20 #r-version-<YYYY>-<MM>-<DD>
 # 2. Upload your code to the repository
 
 
-```{r}
-knitr::include_graphics("repo_entorno.png")
+```{r echo = FALSE}
+knitr::include_graphics("images/repo_entorno.png")
 ```
 
 

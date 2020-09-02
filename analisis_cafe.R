@@ -13,4 +13,3 @@ coffee_data %>%
   facet_wrap(~caracteristicas_cafe, scale="free_y")
 
 
-sessionInfo()
