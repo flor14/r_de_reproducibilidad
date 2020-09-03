@@ -36,6 +36,7 @@ style_duo_accent(
   header_font_url = "https://fonts.cdnfonts.com/css/sifonn",
 )
 
+
 ```
 
 
@@ -147,7 +148,6 @@ class: center
 
 [Tutorial 2 - LearnR](https://mybinder.org/v2/gh/syoh/learnr-tutorial/master?urlpath=shiny/test1/)
 
-[Articulo reproducible - Stencila + Binder](https://elifesciences.org/articles/30274/executable)
 
 
 ---
@@ -290,6 +290,8 @@ Para esto debes elegir una fecha dónde las versiones de tus paquetes estan capt
 
 **`r-version-<YYYY>-<MM>-<DD>`**
 
+
+[*Lee acá información importante sobre las versiones de R que soporta Binder*](https://github.com/binder-examples/r)
 ---
 
 # ➕📄 `runtime.txt`
